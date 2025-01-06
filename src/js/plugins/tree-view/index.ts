@@ -100,8 +100,14 @@ class HSTreeView extends HSBasePlugin<ITreeViewOptions> implements ITreeView {
 
       this.items.push(concatData)
 
-      if (this.controlBy === 'checkbox') this.controlByCheckbox(el, concatData)
-      else this.controlByButton(el, concatData)
+      if (this.controlBy === 'checkbox') {
+        this.controlByCheckbox(el, concatData)
+        if (data.isSelected) {
+          this.controlChange(el, concatData)
+        }
+      } else {
+        this.controlByButton(el, concatData)
+      }
     })
   }
 
